@@ -1,0 +1,6 @@
+.vscode
+.husky
+node_modules
+playwright-report
+storage-state
+test-results

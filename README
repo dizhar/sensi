@@ -1,0 +1,43 @@
+# Project Name: xyte_playwright
+
+## Description
+
+This repository contains the necessary steps to build and run the `xyte_playwright` project using Docker. The project utilizes Playwright for automated testing.
+
+## Prerequisites
+
+Before proceeding with the steps below, please ensure that you have the following installed:
+
+- Docker
+
+## Instructions
+
+### Step 1: Building the Docker Image
+
+1. Open the terminal or command line interface (CLI).
+2. Navigate to the project directory.
+3. Run the following command to build the Docker image:
+
+This command will build the Docker image using the provided Dockerfile.
+
+### Step 2: Running the Docker Container
+
+1. Open the terminal or command line interface (CLI).
+2. Navigate to the project directory.
+3. Run the following command to start the Docker container:
+
+This command will run the Docker container with the specified volume mappings and network settings.
+
+- `-v $(pwd)/playwright-report:/app/playwright-report`: Maps the local `playwright-report` directory to the `/app/playwright-report` directory inside the container, allowing access to Playwright reports.
+- `-v $(pwd)/test-results:/app/test-results`: Maps the local `test-results` directory to the `/app/test-results` directory inside the container, enabling storage of test results.
+- `-t`: Allocates a pseudo-TTY for the container.
+- `--network=host`: Shares the host network stack with the container, allowing network communication.
+- `--rm`: Removes the container automatically after it exits.
+- `--name xyte_playwright`: Assigns the name "xyte_playwright" to the running container.
+- `ci:test -d`: Specifies the command to be executed inside the container.
+
+**Note:** Make sure to replace `ci:test -d` with the appropriate command required for your specific project.
+
+## Additional Information
+
+For more information about the project or any related topics, please refer to the project documentation or contact the project maintainers.
