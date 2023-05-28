@@ -18,7 +18,9 @@ Before proceeding with the steps below, please ensure that you have the followin
 2. Navigate to the project directory.
 3. Run the following command to build the Docker image:
 
-This command will build the Docker image using the provided Dockerfile.
+This command will build the Docker image using the provided Dockerfile.\
+
+docker build -t xyte_playwright .
 
 ### Step 2: Running the Docker Container
 
@@ -27,6 +29,8 @@ This command will build the Docker image using the provided Dockerfile.
 3. Run the following command to start the Docker container:
 
 This command will run the Docker container with the specified volume mappings and network settings.
+
+docker run -v $(pwd)/playwright-report:/app/playwright-report  -v $(pwd)/test-results:/app/test-results -t --network=host --rm -e --name xyte_playwright ci:test
 
 - `-v $(pwd)/playwright-report:/app/playwright-report`: Maps the local `playwright-report` directory to the `/app/playwright-report` directory inside the container, allowing access to Playwright reports.
 - `-v $(pwd)/test-results:/app/test-results`: Maps the local `test-results` directory to the `/app/test-results` directory inside the container, enabling storage of test results.
