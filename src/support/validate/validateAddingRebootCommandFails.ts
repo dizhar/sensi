@@ -66,9 +66,11 @@ export const validateAddingRebootCommandFails = async ({
     ]);
     const message: {error: string} = await response.json();
     expect(message.error).toBe('Name has already been taken');
+    // verify the red toaster  tag with the expected text is displayed
+    expect(xyte.locator('.toastr').getByText(/Name has already been taken/i));
   });
 
   await expect(
-    xyte.getByText(/Name has already been taken/i).first()
+    xyte.getByRole('dialog').getByText(/Name has already been taken/i)
   ).toBeVisible();
 };

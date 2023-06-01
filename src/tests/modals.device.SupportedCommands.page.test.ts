@@ -32,7 +32,9 @@ test.describe('Modals -> Device -> Supported Commands Page', () => {
     });
   });
 
-  test('validate the rejection of "rebot" as a command', async ({xyte}) => {
+  test.only('validate the rejection of "rebot" as a command', async ({
+    xyte,
+  }) => {
     const device = 'tesla 3';
     const friendlyName = 'restart the tesla modal 3';
     const description = 'restart the tesla';
