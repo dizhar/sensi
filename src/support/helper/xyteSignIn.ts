@@ -3,7 +3,7 @@ import {Page} from '@playwright/test';
 
 dotenv.config();
 
-const URL = process.env.BUCKET_URL as string;
+const URL = process.env.URL as string;
 
 interface LoginType {
   xytePage: Page;

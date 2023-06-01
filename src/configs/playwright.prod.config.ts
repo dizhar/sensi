@@ -6,6 +6,7 @@ import * as path from 'path';
 dotenv.config({});
 const ENV = process.env.NODE_ENV as Environments;
 const URL = process.env.URL as string;
+
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
@@ -54,7 +55,7 @@ export const config: PlaywrightTestConfig = {
     timeout: 30000,
   },
   /* Run tests in files in parallel */
-  fullyParallel: false,
+  fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
