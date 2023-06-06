@@ -1,1 +1,1 @@
-export {xyteSignIn} from './xyteSignIn';
+export {signIn} from './signIn';

@@ -4,7 +4,7 @@ trap : TERM INT
 set -e
 
 ENVIRONMENT=prod
-URL=https://www.xyte.io
+URL=https://sensi.ai/
 
 
 

@@ -3,16 +3,16 @@ import {Page} from '@playwright/test';
 
 interface navigationByPageNameType {
   pageName: PageNames;
-  xyte: Page;
+  page: Page;
 }
 
 export const navigationByPageName = async ({
   pageName,
-  xyte,
+  page,
 }: navigationByPageNameType) => {
   const navigationByPageName: Record<PageNames, () => void> = {
     [PageNames.ModelsSupportedCommands]: async () => {
-      await xyte.getByRole('link', {name: /^Models$/i}).click();
+      await page.getByRole('link', {name: /^Models$/i}).click();
     },
   };
   return navigationByPageName[pageName]();

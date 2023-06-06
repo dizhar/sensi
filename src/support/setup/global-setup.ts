@@ -1,10 +1,10 @@
 import {FullConfig} from '@playwright/test';
 
-import {xyteAccountSetup} from './xyteAccountSetup';
+import {accountSetup} from './accountSetup';
 
 const globalSetup = async (config: FullConfig) => {
-  // Setup xyte account storage state
-  await xyteAccountSetup(config);
+  // Setup sensi account storage state
+  await accountSetup(config);
 };
 
 export default globalSetup;

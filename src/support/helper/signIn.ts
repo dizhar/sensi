@@ -6,22 +6,22 @@ dotenv.config();
 const URL = process.env.URL as string;
 
 interface LoginType {
-  xytePage: Page;
+  page: Page
   username: string;
   password: string;
 }
 
-export const xyteSignIn = async ({xytePage, username, password}: LoginType) => {
+export const signIn = async ({page, username, password}: LoginType) => {
   // Go to XYTE home page
-  await xytePage.goto(URL);
+  await page.goto(URL);
 
   // Click on the login button
-  await xytePage.getByRole('link', {name: /^Login$/i}).click();
+  await page.getByRole('link', {name: /^Login$/i}).click();
 
   // Click on the sign in button
-  const [xyteLoginPage] = await Promise.all([
-    xytePage.context().waitForEvent('page'),
-    xytePage
+  const [loginPage] = await Promise.all([
+    page.context().waitForEvent('page'),
+    page
       .getByRole('heading', {name: /^Xyte Partner Portal$/i})
       .locator('..')
       .getByRole('link', {name: /^sign in/i})
@@ -29,18 +29,18 @@ export const xyteSignIn = async ({xytePage, username, password}: LoginType) => {
   ]);
 
   // Type in user
-  await xyteLoginPage.getByRole('textbox', {name: 'email'}).fill(username);
+  await loginPage.getByRole('textbox', {name: 'email'}).fill(username);
 
   // Type in password
-  await xyteLoginPage.getByRole('textbox', {name: 'password'}).fill(password);
+  await loginPage.getByRole('textbox', {name: 'password'}).fill(password);
 
   await Promise.all([
-    xyteLoginPage.waitForLoadState('networkidle'),
-    xyteLoginPage.getByRole('button', {name: /^Sign In$/i}).click(),
+    loginPage.waitForLoadState('networkidle'),
+    loginPage.getByRole('button', {name: /^Sign In$/i}).click(),
   ]);
 
   // Wait for auth item to appear in the browser localStorage
-  await xyteLoginPage.waitForFunction(
+  await loginPage.waitForFunction(
     () => window.localStorage.getItem('auth') !== null,
     {timeout: 60000}
   );
